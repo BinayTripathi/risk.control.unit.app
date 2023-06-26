@@ -114,6 +114,8 @@ const ImageCaptureScreen = ({ navigation }) => {
     }
 
     MediaLibrary.requestPermissionsAsync();
+
+    navigation.navigate('Dashboard')
   };
 
   if (!photoData) {
