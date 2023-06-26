@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesome, AntDesign, Ionicons } from '@expo/vector-icons';
-import * as ImagePicker from 'expo-image-picker';
+
 import {
   StyleSheet,
   Text,
@@ -10,11 +10,13 @@ import {
   Alert,
 } from "react-native";
 import { Camera } from "expo-camera";
-import * as Location from "expo-location";
+
 import { captureRef } from "react-native-view-shot";
 import * as MediaLibrary from "expo-media-library";
 
-const moveAttachment = async (filePath, newFilepath) => {
+import UserTracker from "./UserTracker";
+
+/*const moveAttachment = async (filePath, newFilepath) => {
   return new Promise((resolve, reject) => {
     RNFS.mkdir(dirPicutures)
       .then(() => {
@@ -33,9 +35,9 @@ const moveAttachment = async (filePath, newFilepath) => {
         reject(err);
       });
   });
-};
+};*/
 
-const UserLocation = ({ navigation }) => {
+const ImageCaptureScreen = ({ navigation }) => {
   //Camera
   const [startCamera,setStartCamera] = React.useState(false)
   const [flashMode, setFlashMode] = useState("off");
@@ -43,8 +45,7 @@ const UserLocation = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [photoData, setPhotoData] = useState();
 
-  //GPS
-  //const [gps, setGps] = useState(null);
+  
 
   useEffect(() => {
     permission();
@@ -115,55 +116,6 @@ const UserLocation = ({ navigation }) => {
     MediaLibrary.requestPermissionsAsync();
   };
 
-  // GPS // DATE
-  /*const date = new Date();
-  var hours = new Date().getHours(); //Current Hours
-  var min = new Date().getMinutes(); //Current Minutes
-  var sec = new Date().getSeconds(); //Current Seconds
-  const day = date.getDate();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const fullDate = `${day} - ${month} - ${year}`;
-
-  const gpsComponent = (
-    <View style={styles.gps}>
-      {gps ? (
-        <View>
-          <Text style={styles.prevBtnText}>Date Time : {fullDate} {hours}:{min}:{sec}</Text>
-           <Text style={styles.prevBtnText}>Location : {gps.latitude} / {gps.longitude} </Text>
-        </View>
-      ) : (
-        <View>
-          <Text>Waiting...</Text>
-        </View>
-      )}
-      <AntDesign onPress={() => navigation.navigate('Dashboard')} name="back" size={36} color="white" />
-    </View>
-  );
-
-  useEffect(() => {
-    getLocation();
-  }, [gps, getLocation]);
-
-  const getLocation = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== "granted") {
-      Alert.alert("Permission to access location was denied");
-      return;
-    }
-    // we get the last known location because it populates much quicker
-    let location = await Location.getLastKnownPositionAsync({});
-    if (!gps) {
-      setGps(location.coords);
-    }
-
-    let currentLocation = await Location.getCurrentPositionAsync({});
-
-    if (gps && currentLocation.coords.latitude !== gps.latitude) {
-      setGps(currentLocation.coords);
-    }
-  };*/
-
   if (!photoData) {
     return (
       <View style={styles.container}>
@@ -228,7 +180,7 @@ const UserLocation = ({ navigation }) => {
       
       <View style={styles.middlePhoto} ref={savedPhoto}>
         <Image source={{ uri: photoData.uri }} style={{ flex: 1 }} />
-        
+        <UserTracker displayCoordinates={true}/>
       </View>
 
       <View style={[styles.bottomPrev]}>
@@ -326,4 +278,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserLocation;
+export default ImageCaptureScreen;

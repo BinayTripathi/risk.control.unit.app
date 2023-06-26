@@ -1,12 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import {StyleSheet} from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import {
+  StartScreen,
+  LoginScreen,
+  ImageCaptureScreen,
+  VideoLocation,
+  Dashboard,
+  UserTracker,
+  VideoRecorder,
+  LocationMap
+} from './src/screens'
+
 
 export default function App() {
+
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    
+      <NavigationContainer>
+        <Stack.Navigator 
+          screenOptions={{
+            headerShown: true,
+          }}>              
+              <Stack.Screen name="Home" component={StartScreen} />
+              <Stack.Screen name="LoginScreen" component={LoginScreen} /> 
+              <Stack.Screen name="Dashboard" component={Dashboard} />             
+              <Stack.Screen name="ImageCaptureScreen" component={ImageCaptureScreen} />
+           </Stack.Navigator>
+      </NavigationContainer>
+   
   );
 }
 
