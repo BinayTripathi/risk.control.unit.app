@@ -127,7 +127,7 @@ const ImageCaptureScreen = ({ navigation }) => {
           ref={camera}
           flashMode={flashMode}>
             
-            <View style={styles.top}></View>
+          <View style={styles.top}></View>
 
           <View style={styles.bottom}>
             <TouchableOpacity
@@ -139,38 +139,34 @@ const ImageCaptureScreen = ({ navigation }) => {
                 );
               }}
                 style={{
-                  position: "absolute",
-                  left: 50,
-                  top: 30,
                   backgroundColor: type === Camera.Constants.Type.back ? "#0f0f0f" : "#f0f0f0",
                   color: type === Camera.Constants.Type.back ? "white" : "#fff",
                   borderRadius: 70,
-                  height: 60,
-                  width: 60,
-                }}
-              >
-                <Text style={{ fontSize: 20, left: 10, top:15, color: type === Camera.Constants.Type.back ? "white" : "black"}}> {type === Camera.Constants.Type.back
+                  height: 65,
+                  width: 65,
+                }}><View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+                  {type === Camera.Constants.Type.back
                     ? <AntDesign name="retweet" size={24} color="white" />
                     : <AntDesign name="retweet" size={24} color="black" />
-                }</Text>
+                }
+                </View>                 
               </TouchableOpacity>
+
               <TouchableOpacity style={styles.button} onPress={takePhoto}>
                 <FontAwesome name="camera" style={{ color: "#fff", fontSize: 40}}  />
               </TouchableOpacity>
+
               <TouchableOpacity
                 onPress={__handleFlashMode}
-                style={{
-                  position: "absolute",
-                  right: 40,
-                  top: 30,
+                style={{                  
                   borderRadius: 70,
-                  height: 60,
-                  width: 60,
+                  height: 65,
+                  width: 65,
                 }}
               >
-                <Text style={{ fontSize: 30, right: -10, top:5}}>
-                  <Ionicons  name= { flashMode === "off" ? "flash":"flash-off"} style={{ color: "#fff", fontSize: 40}} />
-                </Text>
+                <View style={{flex: 1, alignItems: "center", justifyContent: "center", borderRadius: 1000,  borderColor: "white",borderWidth: 1,}}>
+                  <Ionicons  name= { flashMode === "off" ? "flash":"flash-off"} style={{ color: "#fff", fontSize: 24}} />
+                </View>
               </TouchableOpacity>
           </View>
         </Camera>
@@ -232,10 +228,11 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 1,
+    flexDirection: "row",
     height: 125,
     backgroundColor: "black",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
   bottomPrev: {
     height: 135,
