@@ -105,17 +105,37 @@ const ImageCaptureScreen = ({ navigation }) => {
         console.log(error);
       }
     };
+   
 
     const { status } = await MediaLibrary.requestPermissionsAsync();
     if (status === "granted") {
       MediaLibrary.createAssetAsync(photo);
-      Alert.alert("Photo Saved");
-      setPhotoData();
+      Alert.alert(  
+        'Photo Saved',  
+        'Photo Saved at so and so location',  
+        [  
+            {  
+                text: 'Ok',  
+                onPress: () => {
+                  setPhotoData();
+                  navigation.navigate('Dashboard')
+                },  
+                style: 'default',  
+            }  
+        ]  
+    );  
+      /*Alert.alert("Photo Saved" ,[
+        {text: 'OK', onPress: () => {
+          setPhotoData();
+          navigation.navigate('Dashboard')
+        }}
+      ]);*/
+      
     }
 
-    MediaLibrary.requestPermissionsAsync();
+    //MediaLibrary.requestPermissionsAsync();
 
-    navigation.navigate('Dashboard')
+    
   };
 
   if (!photoData) {
