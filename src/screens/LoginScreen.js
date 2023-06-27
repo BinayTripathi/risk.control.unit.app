@@ -63,7 +63,6 @@ export default function LoginScreen({ navigation }) {
   
   return (
     <Background>
-      <BackButton goBack={navigation.goBack} />
       <Logo />
       <Header>Welcome agent.</Header>
       <TextInput
