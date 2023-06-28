@@ -20,8 +20,6 @@ const ImageCaptureScreen = ({ navigation }) => {
     </View>  
   )
 
-  console.log("Image Screen")
-  console.log(photoData)
   if(!photoData)    
     return imageCaptureSceen
   else
