@@ -1,12 +1,13 @@
 import { useEffect , useState} from "react";
-import { View, Text, Alert, StyleSheet } from "react-native";
+import { View, Text, Alert, StyleSheet, Image } from "react-native";
 import {
     getLastKnownPositionAsync,
     getCurrentPositionAsync,
     requestForegroundPermissionsAsync,
     PermissionStatus,
   } from 'expo-location';
-import { AntDesign } from '@expo/vector-icons';
+
+  import {getMapPreview} from '../../util/getMapPreview'
 
 const generateDateTime = () => {
     const date = new Date();
@@ -71,9 +72,13 @@ function UserTracker({displayCoordinates}) {
   const displayCoordintes = displayCoordinates? (
     <View style={styles.gps}>
       {gps  ? (
-        <View>
-          <Text style={styles.prevBtnText}>Date Time : {dateTime} </Text>
-           <Text style={styles.prevBtnText}>Location : {gps.latitude} / {gps.longitude} </Text>
+        <View style={styles.mapPreview}>          
+           <Image
+            style={styles.image}
+            source={{
+              uri: getMapPreview(gps.latitude, gps.longitude),
+            }}
+          />
         </View>
       ) : (
         <View>
@@ -103,6 +108,25 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 15,
   },
+   mapPreview: {
+    width: '100%',
+    height: 200,
+    marginVertical: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#aaa7a7',
+    borderRadius: 4,
+    overflow: 'hidden',
+    borderTopWidth: 2,
+    borderColor: '#981a1a',
+    //elevation: 4
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    // borderRadius: 4
+  },
+  
 });
 
 

@@ -1,10 +1,11 @@
 import React from "react";
+import { StyleSheet, View } from "react-native";
+import { AntDesign } from '@expo/vector-icons';
+
 import Background from "../components/Background";
 import Logo from "../components/Logo";
 import Button from "../components/Button";
-import UserTracker from "./UserTracker";
-import { StyleSheet, View } from "react-native";
-import { AntDesign } from '@expo/vector-icons';
+import UserTracker from '../components/ImageComponent/UserTracker';
 
 export default function Dashboard({ navigation }) {
   return (
