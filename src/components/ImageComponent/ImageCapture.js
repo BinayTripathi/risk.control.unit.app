@@ -12,8 +12,6 @@ const ImageCapture = ({setPhotoData}) => {
   const [type, setType] = useState(Camera.Constants.Type.front);
   const [hasPermission, setHasPermission] = useState(null);
   
-
-  //Camera
   useEffect(() => {
     permission();
   }, []);
@@ -104,28 +102,11 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-    map_container: {
-      ...StyleSheet.absoluteFillObject,
-      flex: 1, //the container will fill the whole screen.
-      justifyContent: "flex-end",
-      alignItems: "center",
-    },
-    map: {
-      ...StyleSheet.absoluteFillObject,
-    },
     top: {
       flex: 6,
       height: 50,
       backgroundColor: "#3e3c3c",
       opacity: 0.6,
-    },
-    middle: {
-      flex: 1,
-      position: "relative",
-    },
-    middlePhoto: {
-      flex: 1,
-      position: "relative",
     },
     bottom: {
       flex: 1,
@@ -135,12 +116,6 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "space-around",
     },
-    bottomPrev: {
-      height: 100,
-      backgroundColor: "black",
-      justifyContent: "center",
-      flexDirection: "row",
-    },
     button: {
       height: 65,
       width: 65,
@@ -149,32 +124,5 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       alignItems: "center",
       justifyContent: "center",
-    },
-    insideButton: {
-      height: 45,
-      width: 45,
-      backgroundColor: "white",
-      borderRadius: 100,
-    },
-    prevBtn: {
-      height: 65,
-      width: 105,
-      backgroundColor: "#4a4a4a",
-      color: "white",
-      justifyContent: "center",
-      alignItems: "center",
-      borderRadius: 22,
-      marginTop: 20,
-      elevation: 4
-    },
-    prevBtnText: {
-      color: "white",
-      fontWeight: "700",
-      fontSize: 15,
-    },
-    gps: {
-      position: "absolute",
-      bottom: 15,
-      left: 15,
     },
   });

@@ -80,7 +80,7 @@ const ImagePreview = ({photoData, setPhotoData }) => {
     <View style={styles.container}>
       
       <View style={styles.middlePhoto} ref={savedPhoto}>
-        <Image source={{ uri: photoData.uri }} style={{ flex: 1 }} />
+        <Image source={{ uri: photoData.uri }} style={{ flex: 1, borderRadius: 10 }} />
         <UserTracker displayCoordinates={true}/>
       </View>
 
@@ -106,57 +106,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  map_container: {
-    ...StyleSheet.absoluteFillObject,
-    flex: 1, //the container will fill the whole screen.
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
-  top: {
-    flex: 6,
-    height: 50,
-    backgroundColor: "#3e3c3c",
-    opacity: 0.6,
-  },
-  middle: {
-    flex: 1,
-    position: "relative",
-  },
   middlePhoto: {
     flex: 1,
     position: "relative",
-  },
-  bottom: {
-    flex: 1,
-    flexDirection: "row",
-    height: 125,
-    backgroundColor: "black",
-    alignItems: "center",
-    justifyContent: "space-around",
   },
   bottomPrev: {
     height: 100,
     backgroundColor: "black",
     justifyContent: "center",
     flexDirection: "row",
-  },
-  button: {
-    height: 65,
-    width: 65,
-    borderRadius: 1000,
-    borderColor: "white",
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  insideButton: {
-    height: 45,
-    width: 45,
-    backgroundColor: "white",
-    borderRadius: 100,
   },
   prevBtn: {
     height: 65,
@@ -173,11 +131,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "700",
     fontSize: 15,
-  },
-  gps: {
-    position: "absolute",
-    bottom: 15,
-    left: 15,
   },
 });
 

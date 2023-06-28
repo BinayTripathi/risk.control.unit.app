@@ -93,21 +93,6 @@ function UserTracker({displayCoordinates}) {
 }
 
 const styles = StyleSheet.create({
-  btnText: {
-    fontSize: 20,
-    
-    color: "green",
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginTop: 10,
-    borderColor:"#000",
-  },
-  prevBtnText: {
-    color: '#120101',
-    fontWeight: "700",
-    fontSize: 15,
-  },
    mapPreview: {
     width: '100%',
     height: 200,
@@ -119,12 +104,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderTopWidth: 2,
     borderColor: '#981a1a',
-    //elevation: 4
+    elevation: 4
   },
   image: {
     width: '100%',
     height: '100%',
-    // borderRadius: 4
+    borderRadius: 8
   },
   
 });
