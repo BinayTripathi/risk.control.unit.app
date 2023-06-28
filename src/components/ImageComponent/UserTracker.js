@@ -102,14 +102,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#aaa7a7',
     borderRadius: 4,
     overflow: 'hidden',
-    borderTopWidth: 2,
-    borderColor: '#981a1a',
-    elevation: 4
+    elevation: 4,
+    borderRadius: 10
   },
   image: {
     width: '100%',
     height: '100%',
-    borderRadius: 8
   },
   
 });
